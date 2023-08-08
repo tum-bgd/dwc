@@ -1,6 +1,6 @@
 import os
 import h5py
-import torch
+import random
 
 from torchvision.io import read_image
 
@@ -22,11 +22,15 @@ for labelName in LABEL2NUM_MAP.keys():
         i += 1
         if i % 1000 == 0:
             print("{}/{}".format(i, nImage))
-label = torch.nn.functional.one_hot(label, num_classes=4)
 
 print(image.size())
 print(label.size())
 
+index = list(range(0, nImage))
+random.shuffle(index)
+
 with h5py.File(DATASET_DIR, 'w') as hf:
-    hf.create_dataset('image', data=image.numpy())
-    hf.create_dataset('label', data=label.numpy())
+    hf.create_dataset('trImage', data=image[index[:int(nImage*TR_RATIO)]].numpy())
+    hf.create_dataset('teImage', data=image[index[int(nImage*TR_RATIO):]].numpy())
+    hf.create_dataset('trLabel', data=label[index[:int(nImage*TR_RATIO)]].numpy())
+    hf.create_dataset('teLabel', data=label[index[int(nImage*TR_RATIO):]].numpy())
