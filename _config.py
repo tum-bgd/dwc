@@ -1,9 +1,12 @@
+import argparse
 import torch
 
 # path
 DATA_DIR_PREFIX = '../tiles'
 DATASET_DIR = './drone.h5'
 MODEL_WEIGHT_PATH = './trained_weights.pt'
+PRUNED_MODEL_WEIGHT_PATH = './pruned_trained_weights.pt'
+QUANT_CONFIG_PATH = './quant_config.json'
 
 # label
 LABEL2NUM_MAP = {
@@ -39,3 +42,7 @@ if USE_CUDA:
     DEVICE = torch.device("cuda")
 
 N_EPOCH = 20
+
+# on-board
+BOARD = "DPUCZDX8G_ISA1_B4096"
+BOARD_INPUT = torch.randn([1, N_CHANNEL, TILE_H, TILE_W], dtype=torch.float32)    # NCHW

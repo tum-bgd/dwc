@@ -6,12 +6,11 @@ from _config import *
 
 
 class Model(torch.nn.Module):
-    # def __init__(self, pretrained=None):
-    def __init__(self):
+    def __init__(self, preTrained=False, pruned=False):
         super(Model, self).__init__()
         self.model = torch.nn.Sequential(
-            torch.nn.Conv2d(3, 64, 3, 1),       # in_channel, out_channel, kernel_size, stride
-            torch.nn.MaxPool2d(2),              # kernel_size
+            torch.nn.Conv2d(3, 64, 3, 1),  # in_channel, out_channel, kernel_size, stride
+            torch.nn.MaxPool2d(2),         # kernel_size
             torch.nn.ReLU(),
 
             torch.nn.Conv2d(64, 64, 3, 1),
@@ -28,6 +27,15 @@ class Model(torch.nn.Module):
             torch.nn.Linear(128, len(NUM2LABEL_MAP.keys())),
             torch.nn.LogSoftmax(dim=1)
         )
+        if preTrained:
+            if pruned:
+                self.load_weights(PRUNED_MODEL_WEIGHT_PATH)
+                warnings.warn("model with trained & pruned weights")
+            else:
+                self.load_weights(MODEL_WEIGHT_PATH)
+                warnings.warn("model with trained weights")
+        else:
+            warnings.warn("model with random weights")
 
     def forward(self, x):
         return self.model(x)

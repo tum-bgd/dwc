@@ -1,14 +1,11 @@
-import argparse
-import h5py
-
 from _config import *
 from _data import *
 from _model import *
 
 
-parser = argparse.ArgumentParser(description='debris example')
+parser = argparse.ArgumentParser(description='debris example - model training')
 parser.add_argument('--save-model', action='store_true', default=True,
-                    help='For Saving the current Model')
+                    help='saving the current model')
 args = parser.parse_args()
 
 with h5py.File(DATASET_DIR, 'r') as hf:

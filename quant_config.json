@@ -1,0 +1,4 @@
+{
+    "include_bias_corr": false,
+    "target_device": "DPU"
+}
