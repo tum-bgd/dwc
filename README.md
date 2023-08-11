@@ -1,4 +1,4 @@
-# dead wood image tiles classification
+# Dead wood image tile classification on KV260
 
 some intro
 
