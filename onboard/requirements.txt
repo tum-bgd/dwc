@@ -1,0 +1,6 @@
+h5py==3.9.0
+numpy==1.25.2
+torch==1.13.1
+torchaudio==2.0.0
+torchvision==0.1.6
+typing_extensions==4.4.0

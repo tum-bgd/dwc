@@ -1,0 +1,6 @@
+dwc_ob/
+dwc_ob_pt/
+__pycache__/
+drone.h5
+trained_weights.pt
+nonopt_isb.py
