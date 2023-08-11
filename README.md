@@ -46,6 +46,16 @@ Please follow the [README](./onboard/README.md) in `onboard`.
 
 ## Performances
 
+### Model size/accuracy trade-off
+
+| Model   | Acc.  | # param.               | Size                  |
+|:-------:|:-----:|:----------------------:|:---------------------:|
+| non-opt | 86.0% | 205.28k                | 806kB                 |
+| opt     | 85.2% | 76.65k (62.6% smaller) | 334kB (58.6% smaller) |
+
+
+### Inference speed (FPS)
+
 | Device & Model          | Inference Speed (FPS) |
 |:-----------------------:|:---------------------:|
 | opt on KV260            | 211.07                |
