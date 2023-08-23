@@ -24,9 +24,9 @@ Xilinx Kria KV260
 
 ### On host machine
 
-0. h5 dataset
+Download dataset [here](https://1drv.ms/u/s!Ai0oqAv9SvegzaNDvvbJgCvDqIVPuQ?e=beLLpA), then unzip.
 
-    download link?
+0. Generate h5 dataset
 
 1. Train model
 
